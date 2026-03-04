@@ -28,6 +28,8 @@ jobs:
               cd src
               python app.py    
               sleep 10
-
+              
+        - name: post checkout
+          run: echo "Post checkout step executed"
 
         
