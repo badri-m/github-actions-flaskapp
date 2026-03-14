@@ -2,7 +2,7 @@ name: deploy to EC2
 
 on:
   workflow_run:
-    workflows: ["CI Pipeline"]
+    workflows: ["ci pipeline"]
     types:
       - completed
 
@@ -30,10 +30,10 @@ jobs:
                             sudo systemctl enable docker
                         fi
 
-                        docker stop flask-container || true
-                        docker rm flask-container || true
-                        docker pull ${{ secrets.DOCKER_USERNAME }}/${{vars.NAME}}:latest
-                        docker run -d -p 4000:4000 --name flask-container ${{ secrets.DOCKER_USERNAME }}/${{vars.NAME}}:latest|
+                        sudo docker stop flask-container || true
+                        sudo docker rm flask-container || true
+                        sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{vars.NAME}}:latest
+                        sudo docker run -d -p 4000:4000 --name flask-container ${{ secrets.DOCKER_USERNAME }}/${{vars.NAME}}:latest
                          
 
 
