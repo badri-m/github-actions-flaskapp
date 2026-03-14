@@ -34,3 +34,13 @@ jobs:
         run: |
           sleep 5
           curl -s http://localhost:4000/health
+
+      - name: docker login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker image
+        run: docker push actions-app:latest  
+              
